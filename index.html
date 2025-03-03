@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Real-time WebRTC Test</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>OpenAI Real-time WebRTC Test</h1>
+        
+        <div class="status-container">
+            <div class="status-indicator" id="connectionStatus">
+                <span class="status-label">Connection:</span>
+                <span class="status-value">Not Connected</span>
+            </div>
+            <div class="status-indicator" id="audioStatus">
+                <span class="status-label">Audio:</span>
+                <span class="status-value">Inactive</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <input type="text" id="apiKey" placeholder="Enter OpenAI API Key" class="api-key-input">
+            <select id="modelSelect" class="model-select">
+                <option value="gpt-4o-realtime-preview-2024-12-17">GPT-4o Realtime</option>
+                <option value="gpt-4o">GPT-4o</option>
+            </select>
+            <button id="startButton" class="primary-button">Start Connection</button>
+            <button id="stopButton" class="primary-button" disabled>Stop Connection</button>
+            <button id="muteButton" class="secondary-button" disabled>Mute Microphone</button>
+        </div>
+        
+        <div class="conversation-container">
+            <div class="prompt-container">
+                <textarea id="promptText" placeholder="Type a message or instruction for the model..." class="prompt-input"></textarea>
+                <button id="sendPromptButton" class="primary-button" disabled>Send</button>
+            </div>
+            <div class="chat-history" id="chatHistory">
+                <!-- Chat messages will appear here -->
+            </div>
+        </div>
+        
+        <div class="server-status">
+            <p>Note: Make sure to start the server with <code>node server.js</code> before connecting.</p>
+        </div>
+        
+        <div class="api-events">
+            <details>
+                <summary>API Event Documentation</summary>
+                <p>This application uses the following OpenAI Realtime API events:</p>
+                <ul>
+                    <li><code>session.update</code> - Updates session configuration</li>
+                    <li><code>conversation.item.create</code> - Sends text messages</li>
+                    <li><code>input_audio_buffer.append</code> - Streams microphone audio</li>
+                    <li><code>input_audio_buffer.commit</code> - Commits audio buffer for processing</li>
+                    <li><code>response.create</code> - Requests a response from the model</li>
+                </ul>
+                <p>See the <a href="https://platform.openai.com/docs/api-reference/realtime" target="_blank">OpenAI Realtime API documentation</a> for more details.</p>
+            </details>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

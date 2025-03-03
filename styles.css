@@ -1,0 +1,230 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+.status-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.status-label {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.status-value {
+    padding: 4px 10px;
+    border-radius: 20px;
+    background-color: #e74c3c;
+    color: white;
+}
+
+.status-value.connected {
+    background-color: #2ecc71;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.api-key-input {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.model-select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.primary-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.primary-button:hover {
+    background-color: #2980b9;
+}
+
+.primary-button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.secondary-button {
+    background-color: #95a5a6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.secondary-button:hover {
+    background-color: #7f8c8d;
+}
+
+.secondary-button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.conversation-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.prompt-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.prompt-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    min-height: 80px;
+    resize: vertical;
+}
+
+.chat-history {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.user-message {
+    background-color: #e3f2fd;
+    text-align: right;
+}
+
+.ai-message {
+    background-color: #f1f1f1;
+    text-align: left;
+}
+
+/* Enhance transcription styling for better visibility */
+.transcription-label {
+    font-size: 0.8em;
+    color: #777;
+    font-style: italic;
+    margin-bottom: 3px;
+    display: inline-block;
+    background-color: #f8f8f8;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.transcription-text {
+    font-style: italic;
+    color: #555;
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    margin-top: 3px;
+    border-left: 3px solid #ccc;
+    transition: background-color 0.3s;
+}
+
+/* Adjust user vs AI transcription styles */
+.user-message .transcription-label {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+}
+
+.ai-message .transcription-label {
+    background-color: #f1f8e9;
+    color: #33691e;
+}
+
+.user-message .transcription-text {
+    border-left-color: #2196f3;
+}
+
+.ai-message .transcription-text {
+    border-left-color: #8bc34a;
+}
+
+/* Add indicator for active speech detection */
+body.speech-active:after {
+    content: "🎤 Speech detected";
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #27ae60;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 100;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 0.8; }
+    to { opacity: 1; }
+}
+
+/* Highlight transcription that's being updated */
+.transcription-text.updating {
+    background-color: rgba(255, 255, 0, 0.1);
+}
